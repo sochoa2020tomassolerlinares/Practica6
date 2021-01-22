@@ -1,4 +1,4 @@
-package net.iessochoa.tomassolerlinares.practica6.ui.slideshow;
+package net.iessochoa.tomassolerlinares.practica6.ui.pokemon;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import net.iessochoa.tomassolerlinares.practica6.R;
 
-public class SlideshowFragment extends Fragment {
+public class PokemonFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private PokemonViewModel pokemonViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        pokemonViewModel =
+                new ViewModelProvider(this).get(PokemonViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_pokemons, container, false);
+        final TextView textView = root.findViewById(R.id.text_home);
+        pokemonViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

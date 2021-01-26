@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.iessochoa.tomassolerlinares.practica6.R;
@@ -21,12 +22,14 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
 
     private List<Pokemon> listaPokemon;
 
+    private OnItemPokemonClickListener listener;
+
     @NonNull
     @Override
     public PokemonAdapter.PokemonViewHolder onCreateViewHolder(@NonNull ViewGroup
                                                                        parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pokemon,
-                        parent, false);
+                parent, false);
         return new PokemonViewHolder(itemView);
     }
 
@@ -40,9 +43,9 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
             //comprobamos si tenemos fecha por si no es de base de datos. Ya que utilizamos la misma clase
             holder.tvFechaPkm.setText(pokemon.getFechaPkmFormatoLocal());
             //utilizamos Glide para mostrar la imagen
-            Utils.cargaImagen(holder.ivPokemon,pokemon.getUrl());
-//guardamos el pokemon actual
-            holder.pokemon=pokemon;
+            Utils.cargaImagen(holder.ivPokemon, pokemon.getUrlImagen());
+            //guardamos el pokemon actual
+            holder.pokemon = pokemon;
         }
     }
 
@@ -57,13 +60,22 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
         private TextView tvNombrePkm;
         private ImageView ivPokemon;
         private TextView tvFechaPkm;
+        private CardView cvPokemon;
         //private ImageView ivBorrar;
         private Pokemon pokemon;
+
         public PokemonViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNombrePkm = itemView.findViewById(R.id.tvNombrePkm);
             tvFechaPkm = itemView.findViewById(R.id.tvFechaPkm);
             ivPokemon = itemView.findViewById(R.id.ivPokemon);
+            cvPokemon = itemView.findViewById(R.id.cvItem);
+
+            cvPokemon.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onItemPokemonClick(listaPokemon.get( PokemonViewHolder.this.getAdapterPosition()));
+                }
+            });
         }
 
         public Pokemon getPokemon() {
@@ -72,9 +84,17 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
 
     }
 
-    public void setListaPokemon(List<Pokemon> pokemons){
-        listaPokemon=pokemons;
+    public void setListaPokemon(List<Pokemon> pokemons) {
+        listaPokemon = pokemons;
         notifyDataSetChanged();
+    }
+
+    public interface OnItemPokemonClickListener {
+        void onItemPokemonClick(Pokemon pokemon);
+    }
+
+    public void setOnItemPokemonClickListener(OnItemPokemonClickListener pokemonClickListener) {
+        this.listener = pokemonClickListener;
     }
 
 }

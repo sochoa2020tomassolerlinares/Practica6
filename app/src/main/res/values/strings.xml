@@ -13,4 +13,5 @@
     <string name="fechaPokemon">26/01/2020</string>
     <string name="aviso">Aviso</string>
     <string name="avisoBorrar">¿Está segur@ de borrar este Pokemon?</string>
+    <string name="seleccionado">"Has seleccionado a "</string>
 </resources>

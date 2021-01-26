@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,7 +58,7 @@ public class FavoritosFragment extends Fragment {
 
         definirEventoSwiper();
 
-
+        adapter.setOnItemPokemonClickListener(this::seleccionado);
     }
 
     private void definirEventoSwiper() {
@@ -80,7 +81,7 @@ public class FavoritosFragment extends Fragment {
                         // PokemonListaPokemon
                         PokemonAdapter.PokemonViewHolder vhPokemon = (PokemonAdapter.PokemonViewHolder) viewHolder;
                         Pokemon pokemon = vhPokemon.getPokemon();
-                        borrarDia(pokemon, vhPokemon.getAdapterPosition());
+                        borrarPokemon(pokemon, vhPokemon.getAdapterPosition());
                     }
                 };
         //Creamos el objeto de ItemTouchHelper que se encargará del trabajo
@@ -89,7 +90,7 @@ public class FavoritosFragment extends Fragment {
         itemTouchHelper.attachToRecyclerView(rvPokemons);
     }
 
-    private void borrarDia(Pokemon pokemon, int posicion) {
+    private void borrarPokemon(Pokemon pokemon, int posicion) {
         AlertDialog.Builder dialogo = new AlertDialog.Builder(getContext());
         dialogo.setTitle(R.string.aviso);
         dialogo.setMessage(R.string.avisoBorrar);
@@ -109,5 +110,9 @@ public class FavoritosFragment extends Fragment {
                     }
                 });
         dialogo.show();
+    }
+
+    private void seleccionado(final Pokemon pokemon){
+        Toast.makeText(getContext(), getString(R.string.seleccionado) + pokemon.getNombre(), Toast.LENGTH_SHORT).show();
     }
 }

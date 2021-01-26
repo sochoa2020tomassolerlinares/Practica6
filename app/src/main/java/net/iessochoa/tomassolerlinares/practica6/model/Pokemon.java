@@ -85,6 +85,12 @@ public class Pokemon implements Parcelable {
         this.fechaCompra = fechaCompra;
     }
 
+    public String getUrlImagen(){
+        String url = getUrl();
+        String[] pokemonIndex = url.split("/");
+        return (urlIMAGEN+pokemonIndex[pokemonIndex.length-1] +".png");
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public String getFechaPkmFormatoLocal(){
         //para mostrar la fecha en formato del idioma del dispositivo

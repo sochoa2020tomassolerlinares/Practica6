@@ -9,4 +9,6 @@
 
     <string name="menu_pokemon">Pokemon</string>
     <string name="menu_favoritos">Favoritos</string>
+    <string name="pokemonName">Caterpie</string>
+    <string name="fechaPokemon">26/01/2020</string>
 </resources>

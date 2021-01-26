@@ -18,9 +18,18 @@ public class FavoritosFragment extends Fragment {
 
     private FavoritosViewModel favoritosViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        favoritosViewModel = new ViewModelProvider(this).get(FavoritosViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        favoritosViewModel =
+                new ViewModelProvider(this).get(FavoritosViewModel.class);
         View root = inflater.inflate(R.layout.fragment_favoritos, container, false);
+        /*final TextView textView = root.findViewById(R.id.text_gallery);
+        favoritosViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                textView.setText(s);
+            }
+        });*/
         return root;
     }
 }

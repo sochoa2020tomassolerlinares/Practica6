@@ -11,4 +11,6 @@
     <string name="menu_favoritos">Favoritos</string>
     <string name="pokemonName">Caterpie</string>
     <string name="fechaPokemon">26/01/2020</string>
+    <string name="aviso">Aviso</string>
+    <string name="avisoBorrar">¿Está segur@ de borrar este Pokemon?</string>
 </resources>

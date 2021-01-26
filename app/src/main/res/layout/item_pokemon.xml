@@ -4,12 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cvItem"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-
-    card_view:cardBackgroundColor=""
-    card_view:cardCornerRadius="16dp"
-    card_view:cardElevation="4dp"
-    card_view:cardUseCompatPadding="true">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clLayout"
@@ -25,7 +20,9 @@
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@id/tvNombrePkm"
-            card_view:srcCompat="@drawable/caterpie"/>
+            card_view:srcCompat="@drawable/caterpie"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"/>
 
         <TextView
             android:id="@+id/tvNombrePkm"

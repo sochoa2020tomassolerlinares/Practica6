@@ -28,6 +28,10 @@ public class FavoritosViewModel extends AndroidViewModel {
         return mAllPokemons;
     }
 
+    public List<Pokemon> getAllPokemonsList(){
+        return mAllPokemons.getValue();
+    }
+
     public void insert(Pokemon pokemon) {
         mRepository.insert(pokemon);
     }

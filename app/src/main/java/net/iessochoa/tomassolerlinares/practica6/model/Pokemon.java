@@ -86,7 +86,7 @@ public class Pokemon implements Parcelable {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public String getFechaCompraFormatoLocal(){
+    public String getFechaPkmFormatoLocal(){
         //para mostrar la fecha en formato del idioma del dispositivo
         if(fechaCompra!=null) {
             DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault());

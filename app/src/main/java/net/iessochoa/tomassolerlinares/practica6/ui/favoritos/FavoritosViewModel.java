@@ -1,19 +1,38 @@
 package net.iessochoa.tomassolerlinares.practica6.ui.favoritos;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class FavoritosViewModel extends ViewModel {
+import net.iessochoa.tomassolerlinares.practica6.model.Pokemon;
+import net.iessochoa.tomassolerlinares.practica6.repository.PokemonRepository;
 
-    private MutableLiveData<String> mText;
+import java.util.List;
 
-    public FavoritosViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+public class FavoritosViewModel extends AndroidViewModel {
+    private PokemonRepository mRepository;
+    private LiveData<List<Pokemon>> mAllPokemons;
+
+    public FavoritosViewModel(@NonNull Application application) {
+        super(application);
+        mRepository = PokemonRepository.getInstance(application);
+        //Recuperamos el LiveData de todos los pokemons
+        mAllPokemons = mRepository.getFavoritPokemons();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<List<Pokemon>> getAllPokemons() {
+        return mAllPokemons;
+    }
+
+    public void insert(Pokemon pokemon) {
+        mRepository.insert(pokemon);
+    }
+
+    public void delete(Pokemon pokemon) {
+        mRepository.delete(pokemon);
     }
 }

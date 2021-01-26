@@ -1,4 +1,4 @@
-package net.iessochoa.tomassolerlinares.practica6;
+package net.iessochoa.tomassolerlinares.practica6.ui;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +12,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import net.iessochoa.tomassolerlinares.practica6.R;
 
 public class MainActivity extends AppCompatActivity {
 

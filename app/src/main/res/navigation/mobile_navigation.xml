@@ -7,11 +7,13 @@
 
     <fragment
         android:id="@+id/nav_home"
+        android:name="net.iessochoa.tomassolerlinares.practica6.ui.pokemon.PokemonFragment"
         android:label="@string/menu_pokemon"
         tools:layout="@layout/fragment_pokemons" />
 
     <fragment
         android:id="@+id/nav_favoritos"
+        android:name="net.iessochoa.tomassolerlinares.practica6.ui.favoritos.FavoritosFragment"
         android:label="@string/menu_favoritos"
         tools:layout="@layout/fragment_favoritos" />
 

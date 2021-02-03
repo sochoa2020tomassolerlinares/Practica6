@@ -13,6 +13,8 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 import java.util.Locale;
 
@@ -24,8 +26,8 @@ public class Pokemon implements Parcelable {
     public static final String NOMBRE="nombre";
     public static final String URL="url";
     public static final String FECHA_COMPRA="fechacompra";
-// url de las imagenes de los pokemon. Utiliza este en el instituto
-//urlIMAGEN="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
+    //url de las imagenes de los pokemon. Utiliza este en el instituto
+    //urlIMAGEN="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
     //este tiene mejores imágenes pero no funciona en el instituto por culpa del proxy. pero las imágenes son mejores
     public static final String urlIMAGEN = "https://pokeres.bastionbot.org/images/pokemon/";
 
@@ -35,11 +37,11 @@ public class Pokemon implements Parcelable {
     private int id;
     @ColumnInfo(name = NOMBRE)
     @NonNull
-//@SerializedName("name")//retrofit
+    @SerializedName("name")//retrofit
     private String nombre;
     @ColumnInfo(name = URL)
     @NonNull
-    private String url;
+    private String url;//este campo tiene el mismo nombre que el JSON
     @ColumnInfo(name = FECHA_COMPRA)
     @NonNull
     private Date fechaCompra;

@@ -14,4 +14,5 @@
     <string name="aviso">Aviso</string>
     <string name="avisoBorrar">¿Está segur@ de borrar este Pokemon?</string>
     <string name="seleccionado">"Has seleccionado a "</string>
+    <string name="avisoAdd">¿Desea añadir este Pokemon a favoritos?</string>
 </resources>

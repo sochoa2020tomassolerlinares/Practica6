@@ -9,12 +9,36 @@
         android:id="@+id/nav_home"
         android:name="net.iessochoa.tomassolerlinares.practica6.ui.pokemon.PokemonFragment"
         android:label="@string/menu_pokemon"
-        tools:layout="@layout/fragment_pokemons" />
+        tools:layout="@layout/fragment_pokemons" >
+        <action
+            android:id="@+id/ver_pokemon"
+            app:destination="@id/nav_verPokemon"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_favoritos"
         android:name="net.iessochoa.tomassolerlinares.practica6.ui.favoritos.FavoritosFragment"
         android:label="@string/menu_favoritos"
-        tools:layout="@layout/fragment_favoritos" />
+        tools:layout="@layout/fragment_favoritos" >
+        <action
+            android:id="@+id/ver_favorito"
+            app:destination="@id/nav_verPokemon"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/action_settings"
+        android:name="net.iessochoa.tomassolerlinares.practica6.ui.preferencias.PreferenciasFragment"
+        android:label="Preferencias" />
+    <fragment
+        android:id="@+id/nav_verPokemon"
+        android:name="net.iessochoa.tomassolerlinares.practica6.ui.VerPokemonFragment"
+        android:label="@string/menu_verPokemon" />
 
 </navigation>

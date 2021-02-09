@@ -16,12 +16,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.iessochoa.tomassolerlinares.practica6.R;
 import net.iessochoa.tomassolerlinares.practica6.model.Pokemon;
+import net.iessochoa.tomassolerlinares.practica6.ui.VerPokemonFragment;
 import net.iessochoa.tomassolerlinares.practica6.ui.adapters.PokemonAdapter;
 import net.iessochoa.tomassolerlinares.practica6.ui.favoritos.FavoritosViewModel;
 
@@ -46,6 +48,7 @@ public class PokemonFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         pokemonViewModel = new ViewModelProvider(this).get(PokemonViewModel.class);
+
         adapter = new PokemonAdapter();
         rvPokemons.setHasFixedSize(true);
         rvPokemons.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -61,11 +64,21 @@ public class PokemonFragment extends Fragment {
                         adapter.notifyDataSetChanged();
                     }
                 });
-        adapter.setOnItemPokemonClickListener(this::seleccionado);
+        adapter.setOnItemPokemonClickListener(pokemon -> {
+            //creamos bundle para pasar el pokemon al fragment ver_pokemon
+            Bundle argumentosBundle = new Bundle();
+            argumentosBundle.putParcelable(VerPokemonFragment.ARG_POKEMON, pokemon);
+            //llamamos a la acción con el id del Navigation y el bundle
+
+            NavHostFragment.findNavController(PokemonFragment.this).navigate(R.id.ver_pokemon, argumentosBundle);
+        });
+
         definirEventoSwiper();
+
+
     }
 
-    public void onChanged(@Nullable List<Pokemon> listaPokemon){
+    public void onChanged(@Nullable List<Pokemon> listaPokemon) {
         adapter.setListaPokemon(listaPokemon);
         progressBar.setVisibility(View.INVISIBLE);
     }
@@ -121,11 +134,6 @@ public class PokemonFragment extends Fragment {
                     }
                 });
         dialogo.show();
-    }
-
-
-    private void seleccionado(final Pokemon pokemon) {
-        Toast.makeText(getContext(), getString(R.string.seleccionado) + pokemon.getNombre(), Toast.LENGTH_SHORT).show();
     }
 
     private void defineDetectarFinRecycler() {

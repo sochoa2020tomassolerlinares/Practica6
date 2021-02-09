@@ -2,6 +2,8 @@ package net.iessochoa.tomassolerlinares.practica6.ui;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -51,6 +53,23 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //si es una accion que se encuentre en el Navigation abre el fragment asociado
+        if (NavigationUI.onNavDestinationSelected(item,
+                Navigation.findNavController(this, R.id.nav_host_fragment)))
+            return true;
+        else {//para otras opciones de menú
+            switch (item.getItemId()){
+                case R.id.action_prueba:
+                    Toast.makeText(this,"Prueba menu",Toast.LENGTH_LONG).show();
+                    return true;
+                default:
+                    return super.onOptionsItemSelected(item);
+            }
+        }
     }
 
     @Override

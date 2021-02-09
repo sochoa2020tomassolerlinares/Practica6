@@ -14,13 +14,16 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.iessochoa.tomassolerlinares.practica6.R;
 import net.iessochoa.tomassolerlinares.practica6.model.Pokemon;
+import net.iessochoa.tomassolerlinares.practica6.ui.VerPokemonFragment;
 import net.iessochoa.tomassolerlinares.practica6.ui.adapters.PokemonAdapter;
+import net.iessochoa.tomassolerlinares.practica6.ui.pokemon.PokemonFragment;
 
 import java.util.List;
 
@@ -58,7 +61,14 @@ public class FavoritosFragment extends Fragment {
 
         definirEventoSwiper();
 
-        adapter.setOnItemPokemonClickListener(this::seleccionado);
+        adapter.setOnItemPokemonClickListener(pokemon -> {
+            //creamos bundle para pasar el pokemon al fragment ver_pokemon
+            Bundle argumentosBundle = new Bundle();
+            argumentosBundle.putParcelable(VerPokemonFragment.ARG_POKEMON, pokemon);
+            //llamamos a la acción con el id del Navigation y el bundle
+
+            NavHostFragment.findNavController(FavoritosFragment.this).navigate(R.id.ver_favorito, argumentosBundle);
+        });
     }
 
     private void definirEventoSwiper() {
@@ -110,9 +120,5 @@ public class FavoritosFragment extends Fragment {
                     }
                 });
         dialogo.show();
-    }
-
-    private void seleccionado(final Pokemon pokemon){
-        Toast.makeText(getContext(), getString(R.string.seleccionado) + pokemon.getNombre(), Toast.LENGTH_SHORT).show();
     }
 }

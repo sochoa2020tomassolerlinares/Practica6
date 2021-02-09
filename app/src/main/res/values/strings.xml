@@ -15,4 +15,6 @@
     <string name="avisoBorrar">¿Está segur@ de borrar este Pokemon?</string>
     <string name="seleccionado">"Has seleccionado a "</string>
     <string name="avisoAdd">¿Desea añadir este Pokemon a favoritos?</string>
+    <string name="action_pruebas">Pruebas</string>
+    <string name="menu_verPokemon">Pokemon</string>
 </resources>

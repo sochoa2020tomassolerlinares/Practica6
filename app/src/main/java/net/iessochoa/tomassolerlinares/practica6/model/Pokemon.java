@@ -18,6 +18,10 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 import java.util.Locale;
 
+
+/**
+ * Clase POJO encargada de definir el objeto pokemon y su tabla en la base de datos
+ */
 @Entity(tableName = Pokemon.TABLE_NAME,
         indices = {@Index(value = {Pokemon.NOMBRE},unique = true)})
 public class Pokemon implements Parcelable {

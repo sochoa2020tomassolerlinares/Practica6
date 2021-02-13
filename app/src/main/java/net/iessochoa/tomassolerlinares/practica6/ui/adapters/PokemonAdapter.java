@@ -18,12 +18,16 @@ import net.iessochoa.tomassolerlinares.practica6.utils.Utils;
 
 import java.util.List;
 
+/**
+ * Clase encargada de detectar las llamadas del usuario a sus respectivas funciones
+ */
 public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder> {
 
     private List<Pokemon> listaPokemon;
 
     private OnItemPokemonClickListener listener;
 
+    //Método que se inicia cuando se crea el viewHolder
     @NonNull
     @Override
     public PokemonAdapter.PokemonViewHolder onCreateViewHolder(@NonNull ViewGroup
@@ -33,6 +37,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
         return new PokemonViewHolder(itemView);
     }
 
+    //Método que se lanza cuando se detecta el viewHolder y establece los datos en sus contenedores respectivos
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull PokemonViewHolder holder, int position) {
@@ -49,6 +54,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
         }
     }
 
+    //Devuelve el tamaño de la lista de pokemons
     @Override
     public int getItemCount() {
         if (listaPokemon != null)
@@ -56,6 +62,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
         else return 0;
     }
 
+    //Clase encargada de declarar el viewGolder del adapter
     public class PokemonViewHolder extends RecyclerView.ViewHolder {
         private TextView tvNombrePkm;
         private ImageView ivPokemon;
@@ -64,6 +71,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
         //private ImageView ivBorrar;
         private Pokemon pokemon;
 
+        //Constructor del viewHolder
         public PokemonViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNombrePkm = itemView.findViewById(R.id.tvNombrePkm);
@@ -77,22 +85,25 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
                 }
             });
         }
-
+        //Devuelve un pokemon seleccionado
         public Pokemon getPokemon() {
             return pokemon;
         }
 
     }
 
+    //Almacena una lista de pokemon en el adapter
     public void setListaPokemon(List<Pokemon> pokemons) {
         listaPokemon = pokemons;
         notifyDataSetChanged();
     }
 
+    //Interfaz que declara el evento click Listener
     public interface OnItemPokemonClickListener {
         void onItemPokemonClick(Pokemon pokemon);
     }
 
+    //Método que llama al listener
     public void setOnItemPokemonClickListener(OnItemPokemonClickListener pokemonClickListener) {
         this.listener = pokemonClickListener;
     }

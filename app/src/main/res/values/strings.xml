@@ -17,4 +17,5 @@
     <string name="avisoAdd">¿Desea añadir este Pokemon a favoritos?</string>
     <string name="action_pruebas">Pruebas</string>
     <string name="menu_verPokemon">Pokemon</string>
+    <string name="prueba">Prueba menu</string>
 </resources>

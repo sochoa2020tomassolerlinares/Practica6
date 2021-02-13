@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
+/**
+ * Clase encargada de paginar la uri recibida y devolver la lista solicitada
+ */
 public class ListaPokemon {
     //le cambiamos el nombre original del JSON
     @SerializedName("next")

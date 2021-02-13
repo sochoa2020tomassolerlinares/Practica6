@@ -11,6 +11,9 @@ import net.iessochoa.tomassolerlinares.practica6.network.NetworkService;
 
 import java.util.List;
 
+/**
+ * Clase encargada de crear el repositorio Pokemon y sus métodos principales
+ */
 public class PokemonRepository {
     //implementamos Singleton
     private static volatile PokemonRepository INSTANCE;

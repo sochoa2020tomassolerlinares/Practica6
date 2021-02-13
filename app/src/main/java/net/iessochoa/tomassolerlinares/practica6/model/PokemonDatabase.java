@@ -17,6 +17,9 @@ import java.text.ParseException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Clase abstracta encargada de obtener la base de datos y generarla en el programa
+ */
 @Database(entities = {Pokemon.class}, version = 1)
 //Nos transforma automáticamente las fechas a entero
 @TypeConverters({TransformaFechaSQLite.class})
@@ -60,6 +63,7 @@ public abstract class PokemonDatabase extends RoomDatabase {
                 }
             };
 
+    //Creación de pokemons por defecto en el sistema
     @RequiresApi(api = Build.VERSION_CODES.N)
     private static void cargaPokemonEjemplo() {
         SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd-MM-yyyy");

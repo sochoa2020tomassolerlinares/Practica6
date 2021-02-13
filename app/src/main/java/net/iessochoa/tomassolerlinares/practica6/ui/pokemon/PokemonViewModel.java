@@ -13,9 +13,14 @@ import net.iessochoa.tomassolerlinares.practica6.repository.PokemonRepository;
 
 import java.util.List;
 
+/**
+ * Clase viewmodel de favoritos encargada de definir las funciones del fragment pokemon de cara al usuario
+ */
 public class PokemonViewModel extends AndroidViewModel {
     private PokemonRepository mRepository;
     private LiveData<List<Pokemon>> mAllPokemons;
+
+    //Constructor del viewmodel
     public PokemonViewModel(@NonNull Application application) {
         super(application);
         mRepository=PokemonRepository.getInstance(application);

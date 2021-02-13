@@ -10,6 +10,9 @@ import androidx.room.Update;
 
 import java.util.List;
 
+/**
+ * Interfaz DAO encargada de definir las sentencias SQL de los objetos pokemon
+ */
 @Dao
 public interface PokemonDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

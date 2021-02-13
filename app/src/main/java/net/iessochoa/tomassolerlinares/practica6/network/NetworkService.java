@@ -17,6 +17,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * Clase encargada de acceder al servicio web y recibir los pokemons e integrarlos en el programa
+ */
 public class NetworkService {
     private static final String TAG = "";
     //implementamos Singleton

@@ -16,7 +16,9 @@ import net.iessochoa.tomassolerlinares.practica6.R;
 import net.iessochoa.tomassolerlinares.practica6.model.Pokemon;
 import net.iessochoa.tomassolerlinares.practica6.utils.Utils;
 
-
+/**
+ * Clase fragment encargada de mostrar la información de un pokemon seleccionado en un nuevo fragment
+ */
 public class VerPokemonFragment extends Fragment {
 
     public static final String ARG_POKEMON = "VerPokemonFragment.pokemon";

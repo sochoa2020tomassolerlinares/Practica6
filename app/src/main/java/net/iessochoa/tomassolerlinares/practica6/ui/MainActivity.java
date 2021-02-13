@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         else {//para otras opciones de menú
             switch (item.getItemId()){
                 case R.id.action_prueba:
-                    Toast.makeText(this,"Prueba menu",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,R.string.prueba,Toast.LENGTH_LONG).show();
                     return true;
                 default:
                     return super.onOptionsItemSelected(item);

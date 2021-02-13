@@ -30,12 +30,16 @@ import net.iessochoa.tomassolerlinares.practica6.ui.favoritos.FavoritosViewModel
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Clase Fragment encargada de mostrar los pokemons cargados del servicio web
+ */
 public class PokemonFragment extends Fragment {
     private RecyclerView rvPokemons;
     private PokemonAdapter adapter;
     private PokemonViewModel pokemonViewModel;
     private ProgressBar progressBar;
 
+    //Método que se inicia la primera vez que se lanza el fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_pokemons, container, false);
         rvPokemons = root.findViewById(R.id.rvPokemons);
@@ -44,6 +48,7 @@ public class PokemonFragment extends Fragment {
         return root;
     }
 
+    //Método que se lanza una vez está creado el View donde se declara el viewModel, el adapter y las funciones del fragment
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -78,11 +83,13 @@ public class PokemonFragment extends Fragment {
 
     }
 
+    //Método que se actualiza cuando hay un cambio en el fragment
     public void onChanged(@Nullable List<Pokemon> listaPokemon) {
         adapter.setListaPokemon(listaPokemon);
         progressBar.setVisibility(View.INVISIBLE);
     }
 
+    //Método que define el evento de deslizar para añadir un pokemon a favoritos
     private void definirEventoSwiper() {
         //Creamos el Evento de Swiper
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new
@@ -112,6 +119,7 @@ public class PokemonFragment extends Fragment {
         itemTouchHelper.attachToRecyclerView(rvPokemons);
     }
 
+    //Método que añade un pokemon a favoritos
     private void insertPokemon(Pokemon pokemon, int posicion) {
         AlertDialog.Builder dialogo = new AlertDialog.Builder(getContext());
         dialogo.setTitle(R.string.aviso);
@@ -136,6 +144,7 @@ public class PokemonFragment extends Fragment {
         dialogo.show();
     }
 
+    //Método que detecta el final del recycler mediante paginación y muestra los siguientes pokemons
     private void defineDetectarFinRecycler() {
         rvPokemons.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

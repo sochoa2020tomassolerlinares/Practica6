@@ -7,6 +7,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 import retrofit2.http.Url;
 
+/**
+ * Interfaz del servicio web encargada de definir las sentencias GET del servicio web
+ */
 public interface WebServicePokeApi {
     //llamada con parámetros
     @GET("pokemon")

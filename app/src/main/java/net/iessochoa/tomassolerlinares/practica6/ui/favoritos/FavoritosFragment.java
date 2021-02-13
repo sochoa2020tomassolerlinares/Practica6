@@ -27,11 +27,15 @@ import net.iessochoa.tomassolerlinares.practica6.ui.pokemon.PokemonFragment;
 
 import java.util.List;
 
+/**
+ * Clase Fragment encargada de mostrar los pokemons alamcenados en favoritos
+ */
 public class FavoritosFragment extends Fragment {
     private FavoritosViewModel favoritosViewModel;
     private RecyclerView rvPokemons;
     private PokemonAdapter adapter;
 
+    //Método que se inicia la primera vez que se lanza el fragment
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class FavoritosFragment extends Fragment {
         return root;
     }
 
+    //Método que se lanza una vez está creado el View donde se declara el viewModel, el adapter y las funciones del fragment
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -71,6 +76,7 @@ public class FavoritosFragment extends Fragment {
         });
     }
 
+    //Método que permite eliminar un pokemon de favoritos deslizando el cardview hacia un lado
     private void definirEventoSwiper() {
         //Creamos el Evento de Swiper
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new
@@ -100,6 +106,7 @@ public class FavoritosFragment extends Fragment {
         itemTouchHelper.attachToRecyclerView(rvPokemons);
     }
 
+    //Método para eliminar un pokemon de favoritos
     private void borrarPokemon(Pokemon pokemon, int posicion) {
         AlertDialog.Builder dialogo = new AlertDialog.Builder(getContext());
         dialogo.setTitle(R.string.aviso);
